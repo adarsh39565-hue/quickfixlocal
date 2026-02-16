@@ -1,105 +1,95 @@
 export default function Home() {
   return (
-    <main className="bg-white text-gray-800">
+    <main>
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="container">
+          <h1>Fast & Reliable Local Services</h1>
+          <p>
+            QuickFix Local connects you with trusted professionals in your area.
+            Plumbing, electrical, repairs — done right the first time.
+          </p>
+          <div className="hero-buttons">
+            <a href="#contact" className="btn primary">
+              Book a Service
+            </a>
+            <a href="#services" className="btn secondary">
+              View Services
+            </a>
+          </div>
+        </div>
+      </section>
 
-      {/* HERO SECTION */}
-      <section className="bg-blue-600 text-white py-20 px-6 text-center">
-        <h1 className="text-4xl font-bold mb-4">
-          Trusted Electrician, Plumbing & AC Repair Services in Noida
-        </h1>
-        <p className="text-lg mb-6">
-          Same-Day Professional Home Services with Transparent & Affordable Pricing.
-        </p>
-        <div className="flex justify-center gap-4">
-          <a
-            href="tel:+919999999999"
-            className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold"
-          >
-            📞 Call Now
+      {/* Services */}
+      <section id="services" className="services">
+        <div className="container">
+          <h2>Our Services</h2>
+
+          <div className="service-grid">
+            <div className="card">
+              <h3>Plumbing</h3>
+              <p>Leak repairs, installations, and emergency plumbing services.</p>
+            </div>
+
+            <div className="card">
+              <h3>Electrical</h3>
+              <p>Safe and certified electrical repairs and installations.</p>
+            </div>
+
+            <div className="card">
+              <h3>Home Repairs</h3>
+              <p>General maintenance and quick fixes for your home.</p>
+            </div>
+
+            <div className="card">
+              <h3>AC & Appliances</h3>
+              <p>Installation and repair of AC units and major appliances.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="why">
+        <div className="container">
+          <h2>Why Choose QuickFix Local?</h2>
+
+          <div className="why-grid">
+            <div>
+              <h4>✔ Verified Professionals</h4>
+              <p>All service providers are background-checked and experienced.</p>
+            </div>
+
+            <div>
+              <h4>✔ Fast Response</h4>
+              <p>Same-day service available in most locations.</p>
+            </div>
+
+            <div>
+              <h4>✔ Affordable Pricing</h4>
+              <p>Transparent pricing with no hidden charges.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="contact" className="cta">
+        <div className="container">
+          <h2>Need a Quick Fix?</h2>
+          <p>Book your service today and get professional help instantly.</p>
+          <a href="#" className="btn primary large">
+            Get Started
           </a>
-          <a
-            href="https://wa.me/919999999999"
-            className="bg-green-500 px-6 py-3 rounded-lg font-semibold"
-          >
-            💬 WhatsApp Booking
-          </a>
         </div>
       </section>
 
-      {/* SERVICES SECTION */}
-      <section className="py-16 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Professional Home Services in Noida
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-8">
-
-          <div className="shadow-lg p-6 rounded-xl">
-            <h3 className="text-xl font-semibold mb-3">⚡ Expert Electrician in Noida</h3>
-            <p>
-              Wiring repair, switch installation, fan fitting, MCB replacement,
-              inverter setup, and emergency electrical services.
-            </p>
-          </div>
-
-          <div className="shadow-lg p-6 rounded-xl">
-            <h3 className="text-xl font-semibold mb-3">🚰 Professional Plumbing Services</h3>
-            <p>
-              Pipe leakage repair, bathroom fittings, kitchen plumbing,
-              tap & shower installation with fast same-day service.
-            </p>
-          </div>
-
-          <div className="shadow-lg p-6 rounded-xl">
-            <h3 className="text-xl font-semibold mb-3">❄ AC Repair & Installation</h3>
-            <p>
-              AC gas filling, servicing, installation, and complete AC repair
-              solutions across all sectors of Noida.
-            </p>
-          </div>
-
+      {/* Footer */}
+      <footer>
+        <div className="container">
+          <p>© 2026 QuickFix Local. All rights reserved.</p>
         </div>
-      </section>
-
-      {/* WHY CHOOSE US */}
-      <section className="bg-gray-100 py-16 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-8">Why Choose Quick Fix Local?</h2>
-
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
-          <div>✔ Same-Day Service Across Noida</div>
-          <div>✔ Transparent Pricing (No Hidden Charges)</div>
-          <div>✔ Verified & Skilled Technicians</div>
-          <div>✔ Fast Response Time</div>
-          <div>✔ Affordable Rates</div>
-          <div>✔ Customer Satisfaction Guaranteed</div>
-        </div>
-      </section>
-
-      {/* SERVICE AREAS */}
-      <section className="py-16 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-6">Serving All Major Sectors in Noida</h2>
-        <p>
-          Sector 18 • Sector 62 • Sector 75 • Sector 137 • Sector 50 •
-          Sector 76 • Sector 93 and nearby areas.
-        </p>
-      </section>
-
-      {/* FINAL CTA */}
-      <section className="bg-blue-600 text-white py-16 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-4">
-          Need Service Today?
-        </h2>
-        <p className="mb-6">
-          Call Now or WhatsApp Us for Instant Booking.
-        </p>
-        <a
-          href="tel:+919999999999"
-          className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold"
-        >
-          📞 Book Now
-        </a>
-      </section>
-
+      </footer>
     </main>
   );
 }
