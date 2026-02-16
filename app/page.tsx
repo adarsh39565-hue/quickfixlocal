@@ -1,207 +1,105 @@
-import Link from "next/link";
-
 export default function Home() {
   return (
-    <div style={{ fontFamily: "Arial, sans-serif" }}>
+    <main className="bg-white text-gray-800">
 
-      {/* NAVBAR */}
-      <nav
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "20px 40px",
-          backgroundColor: "black",
-          color: "white",
-        }}
-      >
-        <h2 style={{ margin: 0 }}>QuickFix Local</h2>
-        <Link href="/book">
-          <button style={orangeButton}>Book Now</button>
-        </Link>
-      </nav>
-
-      {/* HERO */}
-      <section
-        style={{
-          backgroundColor: "#ff6600",
-          color: "white",
-          padding: "90px 20px",
-          textAlign: "center",
-        }}
-      >
-        <h1 style={{ fontSize: "50px", marginBottom: "20px" }}>
-          Fast Home Services Within 60 Minutes
+      {/* HERO SECTION */}
+      <section className="bg-blue-600 text-white py-20 px-6 text-center">
+        <h1 className="text-4xl font-bold mb-4">
+          Trusted Electrician, Plumbing & AC Repair Services in Noida
         </h1>
-        <p style={{ fontSize: "20px", marginBottom: "30px" }}>
-          Plumbing, Electrical & Cleaning Services at Your Doorstep
+        <p className="text-lg mb-6">
+          Same-Day Professional Home Services with Transparent & Affordable Pricing.
         </p>
-
-        <Link href="/book">
-          <button style={blackButton}>Book Service Now</button>
-        </Link>
-      </section>
-
-      {/* SERVICES */}
-      <section style={{ padding: "70px 20px", textAlign: "center" }}>
-        <h2 style={{ fontSize: "38px", marginBottom: "50px" }}>
-          Our Services
-        </h2>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "30px",
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={cardStyle}>
-            <h3>🛠 Plumbing</h3>
-            <p>Tap repair, leakage fixes & bathroom fittings.</p>
-            <Link href="/book">
-              <button style={smallButton}>Book</button>
-            </Link>
-          </div>
-
-          <div style={cardStyle}>
-            <h3>⚡ Electrical</h3>
-            <p>Switch repair, wiring & appliance installation.</p>
-            <Link href="/book">
-              <button style={smallButton}>Book</button>
-            </Link>
-          </div>
-
-          <div style={cardStyle}>
-            <h3>🧼 Cleaning</h3>
-            <p>Deep cleaning for bathroom, kitchen & full home.</p>
-            <Link href="/book">
-              <button style={smallButton}>Book</button>
-            </Link>
-          </div>
+        <div className="flex justify-center gap-4">
+          <a
+            href="tel:+919999999999"
+            className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold"
+          >
+            📞 Call Now
+          </a>
+          <a
+            href="https://wa.me/919999999999"
+            className="bg-green-500 px-6 py-3 rounded-lg font-semibold"
+          >
+            💬 WhatsApp Booking
+          </a>
         </div>
       </section>
 
-      {/* PRICING */}
-      <section
-        style={{
-          backgroundColor: "#111",
-          padding: "90px 20px",
-          textAlign: "center",
-          color: "white",
-        }}
-      >
-        <h2 style={{ fontSize: "42px", marginBottom: "60px" }}>
-          Our Pricing Plans
+      {/* SERVICES SECTION */}
+      <section className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Professional Home Services in Noida
         </h2>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "30px",
-            flexWrap: "wrap",
-          }}
-        >
-          {/* BASIC */}
-          <div style={darkCard}>
-            <h3>Basic</h3>
-            <h1 style={priceStyle}>₹499</h1>
-            <p>✔ 1 Issue Fix</p>
-            <p>✔ 1 Hour Service</p>
-            <Link href="/book">
-              <button style={orangeButton}>Choose Plan</button>
-            </Link>
+        <div className="grid md:grid-cols-3 gap-8">
+
+          <div className="shadow-lg p-6 rounded-xl">
+            <h3 className="text-xl font-semibold mb-3">⚡ Expert Electrician in Noida</h3>
+            <p>
+              Wiring repair, switch installation, fan fitting, MCB replacement,
+              inverter setup, and emergency electrical services.
+            </p>
           </div>
 
-          {/* STANDARD */}
-          <div style={{ ...darkCard, border: "3px solid #ff6600" }}>
-            <h3>Standard (Most Popular)</h3>
-            <h1 style={priceStyle}>₹999</h1>
-            <p>✔ Up to 3 Issues</p>
-            <p>✔ 2 Hour Service</p>
-            <p>✔ Priority Support</p>
-            <Link href="/book">
-              <button style={orangeButton}>Choose Plan</button>
-            </Link>
+          <div className="shadow-lg p-6 rounded-xl">
+            <h3 className="text-xl font-semibold mb-3">🚰 Professional Plumbing Services</h3>
+            <p>
+              Pipe leakage repair, bathroom fittings, kitchen plumbing,
+              tap & shower installation with fast same-day service.
+            </p>
           </div>
 
-          {/* PREMIUM */}
-          <div style={darkCard}>
-            <h3>Premium</h3>
-            <h1 style={priceStyle}>₹1999</h1>
-            <p>✔ Multiple Issues</p>
-            <p>✔ Same Day Service</p>
-            <p>✔ 7-Day Warranty</p>
-            <Link href="/book">
-              <button style={orangeButton}>Choose Plan</button>
-            </Link>
+          <div className="shadow-lg p-6 rounded-xl">
+            <h3 className="text-xl font-semibold mb-3">❄ AC Repair & Installation</h3>
+            <p>
+              AC gas filling, servicing, installation, and complete AC repair
+              solutions across all sectors of Noida.
+            </p>
           </div>
+
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer
-        style={{
-          backgroundColor: "black",
-          color: "white",
-          textAlign: "center",
-          padding: "25px",
-        }}
-      >
-        © 2026 QuickFix Local. All Rights Reserved.
-      </footer>
-    </div>
+      {/* WHY CHOOSE US */}
+      <section className="bg-gray-100 py-16 px-6 text-center">
+        <h2 className="text-3xl font-bold mb-8">Why Choose Quick Fix Local?</h2>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
+          <div>✔ Same-Day Service Across Noida</div>
+          <div>✔ Transparent Pricing (No Hidden Charges)</div>
+          <div>✔ Verified & Skilled Technicians</div>
+          <div>✔ Fast Response Time</div>
+          <div>✔ Affordable Rates</div>
+          <div>✔ Customer Satisfaction Guaranteed</div>
+        </div>
+      </section>
+
+      {/* SERVICE AREAS */}
+      <section className="py-16 px-6 text-center">
+        <h2 className="text-3xl font-bold mb-6">Serving All Major Sectors in Noida</h2>
+        <p>
+          Sector 18 • Sector 62 • Sector 75 • Sector 137 • Sector 50 •
+          Sector 76 • Sector 93 and nearby areas.
+        </p>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="bg-blue-600 text-white py-16 px-6 text-center">
+        <h2 className="text-3xl font-bold mb-4">
+          Need Service Today?
+        </h2>
+        <p className="mb-6">
+          Call Now or WhatsApp Us for Instant Booking.
+        </p>
+        <a
+          href="tel:+919999999999"
+          className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold"
+        >
+          📞 Book Now
+        </a>
+      </section>
+
+    </main>
   );
 }
-
-/* STYLES */
-
-const cardStyle = {
-  width: "280px",
-  padding: "25px",
-  border: "1px solid #ddd",
-  borderRadius: "10px",
-};
-
-const darkCard = {
-  width: "300px",
-  padding: "35px",
-  backgroundColor: "#1e1e1e",
-  borderRadius: "12px",
-  boxShadow: "0 8px 20px rgba(0,0,0,0.5)",
-};
-
-const priceStyle = {
-  color: "#ff6600",
-  fontSize: "42px",
-  margin: "15px 0",
-};
-
-const orangeButton = {
-  marginTop: "15px",
-  padding: "10px 20px",
-  backgroundColor: "#ff6600",
-  color: "white",
-  border: "none",
-  cursor: "pointer",
-  fontWeight: "bold",
-};
-
-const blackButton = {
-  padding: "15px 30px",
-  fontSize: "18px",
-  backgroundColor: "black",
-  color: "white",
-  border: "none",
-  cursor: "pointer",
-};
-
-const smallButton = {
-  marginTop: "10px",
-  padding: "6px 15px",
-  backgroundColor: "black",
-  color: "white",
-  border: "none",
-  cursor: "pointer",
-};
