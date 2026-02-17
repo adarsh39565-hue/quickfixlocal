@@ -1,7 +1,39 @@
+"use client";
+
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
+
 export default function Home() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [service, setService] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+
+    const { error } = await supabase.from("bookings").insert([
+      { name, phone, service },
+    ]);
+
+    if (error) {
+      setMessage("Something went wrong. Please try again.");
+    } else {
+      setMessage("Booking submitted successfully!");
+      setName("");
+      setPhone("");
+      setService("");
+    }
+
+    setLoading(false);
+  };
+
   return (
     <main>
-      {/* Hero Section */}
+      {/* HERO */}
       <section className="hero">
         <div className="container">
           <h1>Fast & Reliable Local Services</h1>
@@ -9,19 +41,11 @@ export default function Home() {
             QuickFix Local connects you with trusted professionals in your area.
             Plumbing, electrical, repairs — done right the first time.
           </p>
-          <div className="hero-buttons">
-            <a href="#contact" className="btn primary">
-              Book a Service
-            </a>
-            <a href="#services" className="btn secondary">
-              View Services
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="services">
+      {/* SERVICES */}
+      <section className="services">
         <div className="container">
           <h2>Our Services</h2>
 
@@ -49,42 +73,49 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="why">
+      {/* BOOKING FORM */}
+      <section className="cta">
         <div className="container">
-          <h2>Why Choose QuickFix Local?</h2>
+          <h2>Book a Service</h2>
 
-          <div className="why-grid">
-            <div>
-              <h4>✔ Verified Professionals</h4>
-              <p>All service providers are background-checked and experienced.</p>
-            </div>
+          <form onSubmit={handleSubmit} className="booking-form">
+            <input
+              type="text"
+              placeholder="Your Name"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
 
-            <div>
-              <h4>✔ Fast Response</h4>
-              <p>Same-day service available in most locations.</p>
-            </div>
+            <input
+              type="text"
+              placeholder="Phone Number"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
 
-            <div>
-              <h4>✔ Affordable Pricing</h4>
-              <p>Transparent pricing with no hidden charges.</p>
-            </div>
-          </div>
+            <select
+              required
+              value={service}
+              onChange={(e) => setService(e.target.value)}
+            >
+              <option value="">Select Service</option>
+              <option value="Plumbing">Plumbing</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Home Repairs">Home Repairs</option>
+              <option value="AC & Appliances">AC & Appliances</option>
+            </select>
+
+            <button type="submit" className="btn primary large">
+              {loading ? "Submitting..." : "Book Now"}
+            </button>
+          </form>
+
+          {message && <p className="form-message">{message}</p>}
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="contact" className="cta">
-        <div className="container">
-          <h2>Need a Quick Fix?</h2>
-          <p>Book your service today and get professional help instantly.</p>
-          <a href="#" className="btn primary large">
-            Get Started
-          </a>
-        </div>
-      </section>
-
-      {/* Footer */}
       <footer>
         <div className="container">
           <p>© 2026 QuickFix Local. All rights reserved.</p>
