@@ -24,7 +24,10 @@ export default function RootLayout({
               <a className="rounded-md px-3 py-2 text-sm hover:bg-gray-100" href="#">
                 Become a Partner
               </a>
-              <a className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-gray-800" href="#">
+              <a
+                className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-gray-800"
+                href="#"
+              >
                 Login
               </a>
             </div>
