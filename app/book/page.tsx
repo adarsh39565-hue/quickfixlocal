@@ -1,107 +1,56 @@
 "use client";
 
+import { useSearchParams, useRouter } from "next/navigation";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
 import { useState } from "react";
 
-export default function BookingPage() {
-  const [name, setName] = useState("");
-  const [service, setService] = useState("");
+export default function BookPage() {
+  const params = useSearchParams();
+  const router = useRouter();
+
+  const serviceFromUrl = params.get("service") ?? "";
+  const cityFromUrl = params.get("city") ?? "";
+
+  const [service, setService] = useState(serviceFromUrl);
+  const [city, setCity] = useState(cityFromUrl);
   const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const res = await fetch("/api/book", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          service,
-          phone,
-          address,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        alert(data.error || "Something went wrong");
-      } else {
-        alert("Booking submitted successfully!");
-        setName("");
-        setService("");
-        setPhone("");
-        setAddress("");
-      }
-    } catch (error) {
-      console.error("Frontend Error:", error);
-      alert("Server connection failed");
-    }
-
-    setLoading(false);
-  };
+  function submit() {
+    // For now just show confirmation screen (later connect Supabase)
+    router.push(
+      `/book/confirm?service=${encodeURIComponent(service)}&city=${encodeURIComponent(
+        city
+      )}&phone=${encodeURIComponent(phone)}`
+    );
+  }
 
   return (
-    <div style={{ padding: "40px", maxWidth: "500px", margin: "auto" }}>
-      <h1>Book a Service</h1>
+    <div className="py-10 max-w-xl">
+      <h1 className="text-2xl font-semibold">Book a service</h1>
+      <p className="mt-2 text-sm text-gray-600">Fill details and confirm your request.</p>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-        }}
-      >
-        <input
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
+      <div className="mt-6 space-y-3">
+        <div>
+          <div className="text-sm font-medium mb-1">Service</div>
+          <Input value={service} onChange={(e) => setService(e.target.value)} placeholder="Electrician" />
+        </div>
 
-        <input
-          id="service"
-          name="service"
-          type="text"
-          placeholder="Service Needed"
-          value={service}
-          onChange={(e) => setService(e.target.value)}
-          required
-        />
+        <div>
+          <div className="text-sm font-medium mb-1">City</div>
+          <Input value={city} onChange={(e) => setCity(e.target.value)} placeholder="Delhi" />
+        </div>
 
-        <input
-          id="phone"
-          name="phone"
-          type="text"
-          placeholder="Phone Number"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-        />
+        <div>
+          <div className="text-sm font-medium mb-1">Phone</div>
+          <Input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="9876543210" />
+        </div>
 
-        <input
-          id="address"
-          name="address"
-          type="text"
-          placeholder="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required
-        />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Submitting..." : "Book Now"}
-        </button>
-      </form>
+        <Button className="w-full" onClick={submit}>
+          Confirm Booking
+        </Button>
+      </div>
     </div>
   );
 }
+
