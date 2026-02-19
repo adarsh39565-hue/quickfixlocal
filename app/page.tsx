@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Button } from "../components/ui/button";
+import { Card } from "../components/ui/card";
+import { Input } from "../components/ui/input";
 
 const services = [
   "Electrician",
@@ -32,10 +32,18 @@ export default function Home() {
         </div>
 
         <div className="mt-6 flex flex-wrap gap-2 text-sm text-white/90">
-          <span className="rounded-full border border-white/30 px-3 py-1">⭐ 4.7 Avg Rating</span>
-          <span className="rounded-full border border-white/30 px-3 py-1">✅ Verified Pros</span>
-          <span className="rounded-full border border-white/30 px-3 py-1">🕒 On-time Service</span>
-          <span className="rounded-full border border-white/30 px-3 py-1">💬 Fast Support</span>
+          <span className="rounded-full border border-white/30 px-3 py-1">
+            ⭐ 4.7 Avg Rating
+          </span>
+          <span className="rounded-full border border-white/30 px-3 py-1">
+            ✅ Verified Pros
+          </span>
+          <span className="rounded-full border border-white/30 px-3 py-1">
+            🕒 On-time Service
+          </span>
+          <span className="rounded-full border border-white/30 px-3 py-1">
+            💬 Fast Support
+          </span>
         </div>
       </section>
 
@@ -80,3 +88,4 @@ export default function Home() {
     </div>
   );
 }
+
