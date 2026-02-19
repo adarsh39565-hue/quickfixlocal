@@ -1,4 +1,5 @@
 import "./globals.css";
+import Link from "next/link";
 
 export const metadata = {
   title: "Quick Fix Local",
@@ -15,25 +16,47 @@ export default function RootLayout({
       <body className="min-h-screen bg-white text-gray-900">
         <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-            <div className="text-lg font-semibold">Quick Fix Local</div>
+            <Link href="/" className="text-lg font-semibold">
+              Quick Fix Local
+            </Link>
 
-            <div className="hidden gap-2 md:flex">
-              <a className="rounded-md px-3 py-2 text-sm hover:bg-gray-100" href="#">
-                Select City
-              </a>
-              <a className="rounded-md px-3 py-2 text-sm hover:bg-gray-100" href="#">
+            <nav className="hidden items-center gap-2 md:flex">
+              <details className="relative">
+                <summary className="cursor-pointer list-none rounded-md px-3 py-2 text-sm hover:bg-gray-100">
+                  Select City ▾
+                </summary>
+                <div className="absolute right-0 mt-2 w-44 rounded-md border bg-white p-2 shadow">
+                  {["Delhi", "Noida", "Gurgaon", "Ghaziabad"].map((city) => (
+                    <Link
+                      key={city}
+                      href={`/book?city=${encodeURIComponent(city)}`}
+                      className="block rounded px-2 py-2 text-sm hover:bg-gray-100"
+                    >
+                      {city}
+                    </Link>
+                  ))}
+                </div>
+              </details>
+
+              <Link
+                className="rounded-md px-3 py-2 text-sm hover:bg-gray-100"
+                href="/partner"
+              >
                 Become a Partner
-              </a>
-              <a
+              </Link>
+
+              <Link
                 className="rounded-md bg-black px-4 py-2 text-sm text-white hover:bg-gray-800"
-                href="#"
+                href="/login"
               >
                 Login
-              </a>
-            </div>
+              </Link>
+            </nav>
 
             <div className="md:hidden">
-              <button className="rounded-md border px-3 py-2 text-sm">Menu</button>
+              <Link className="rounded-md border px-3 py-2 text-sm" href="/get-started">
+                Menu
+              </Link>
             </div>
           </div>
         </header>
