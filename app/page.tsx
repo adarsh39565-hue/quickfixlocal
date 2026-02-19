@@ -1,126 +1,77 @@
-"use client";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
-import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+const services = [
+  "Electrician",
+  "Plumber",
+  "AC Repair",
+  "Home Cleaning",
+  "Appliance Repair",
+  "Painting",
+];
 
 export default function Home() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [service, setService] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setMessage("");
-
-    const { error } = await supabase.from("bookings").insert([
-      { name, phone, service },
-    ]);
-
-    if (error) {
-      setMessage("Something went wrong. Please try again.");
-    } else {
-      setMessage("Booking submitted successfully!");
-      setName("");
-      setPhone("");
-      setService("");
-    }
-
-    setLoading(false);
-  };
-
   return (
-    <main>
+    <div className="space-y-16 py-10">
       {/* HERO */}
-      <section className="hero">
-        <div className="container">
-          <h1>Fast & Reliable Local Services</h1>
-          <p>
-            QuickFix Local connects you with trusted professionals in your area.
-            Plumbing, electrical, repairs — done right the first time.
-          </p>
+      <section className="rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-10 text-white">
+        <h1 className="text-4xl font-bold md:text-5xl">
+          Book Trusted Local Services
+        </h1>
+        <p className="mt-4 text-lg text-white/80">
+          Verified professionals • Transparent pricing • Fast support
+        </p>
+
+        <div className="mt-6 flex flex-col gap-3 md:flex-row">
+          <Input
+            placeholder="Search services..."
+            className="h-12 bg-white text-black"
+          />
+          <Button className="h-12 px-6 bg-black hover:bg-gray-800">
+            Search
+          </Button>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section className="services">
-        <div className="container">
-          <h2>Our Services</h2>
+      <section>
+        <h2 className="mb-6 text-2xl font-semibold">Popular Services</h2>
 
-          <div className="service-grid">
-            <div className="card">
-              <h3>Plumbing</h3>
-              <p>Leak repairs, installations, and emergency plumbing services.</p>
-            </div>
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+          {services.map((service) => (
+            <Card
+              key={service}
+              className="cursor-pointer p-6 transition hover:shadow-xl"
+            >
+              <h3 className="text-lg font-semibold">{service}</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                Professional & affordable service
+              </p>
+              <Button className="mt-4 w-full">Book Now</Button>
+            </Card>
+          ))}
+        </div>
+      </section>
 
-            <div className="card">
-              <h3>Electrical</h3>
-              <p>Safe and certified electrical repairs and installations.</p>
-            </div>
-
-            <div className="card">
-              <h3>Home Repairs</h3>
-              <p>General maintenance and quick fixes for your home.</p>
-            </div>
-
-            <div className="card">
-              <h3>AC & Appliances</h3>
-              <p>Installation and repair of AC units and major appliances.</p>
-            </div>
+      {/* TRUST */}
+      <section className="rounded-xl bg-gray-100 p-8 text-center">
+        <h3 className="text-xl font-semibold">Why Choose Quick Fix Local?</h3>
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          <div>
+            <p className="text-2xl font-bold">4.8★</p>
+            <p className="text-gray-500">Average Rating</p>
+          </div>
+          <div>
+            <p className="text-2xl font-bold">5000+</p>
+            <p className="text-gray-500">Happy Customers</p>
+          </div>
+          <div>
+            <p className="text-2xl font-bold">100%</p>
+            <p className="text-gray-500">Verified Professionals</p>
           </div>
         </div>
       </section>
-
-      {/* BOOKING FORM */}
-      <section className="cta">
-        <div className="container">
-          <h2>Book a Service</h2>
-
-          <form onSubmit={handleSubmit} className="booking-form">
-            <input
-              type="text"
-              placeholder="Your Name"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-
-            <input
-              type="text"
-              placeholder="Phone Number"
-              required
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-
-            <select
-              required
-              value={service}
-              onChange={(e) => setService(e.target.value)}
-            >
-              <option value="">Select Service</option>
-              <option value="Plumbing">Plumbing</option>
-              <option value="Electrical">Electrical</option>
-              <option value="Home Repairs">Home Repairs</option>
-              <option value="AC & Appliances">AC & Appliances</option>
-            </select>
-
-            <button type="submit" className="btn primary large">
-              {loading ? "Submitting..." : "Book Now"}
-            </button>
-          </form>
-
-          {message && <p className="form-message">{message}</p>}
-        </div>
-      </section>
-
-      <footer>
-        <div className="container">
-          <p>© 2026 QuickFix Local. All rights reserved.</p>
-        </div>
-      </footer>
-    </main>
+    </div>
   );
 }
