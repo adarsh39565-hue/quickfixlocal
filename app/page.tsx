@@ -103,7 +103,10 @@ export default function Home() {
                   <div>
                     <h3 className="text-lg font-medium">{s.title}</h3>
                     <p className="mt-2 text-sm text-gray-600">{s.desc}</p>
-                    <Link className="mt-4 inline-block text-sm underline" href="/book">
+                    <Link
+                      className="mt-4 inline-block text-sm underline"
+                      href="/book"
+                    >
                       Book {s.title} →
                     </Link>
                   </div>
@@ -136,7 +139,10 @@ export default function Home() {
                 <li>✔ Bathroom fittings</li>
               </ul>
 
-              <Link href="/book" className="mt-6 inline-block text-sm underline">
+              <Link
+                href="/book"
+                className="mt-6 inline-block text-sm underline"
+              >
                 Book Plumbing →
               </Link>
             </div>
@@ -152,7 +158,10 @@ export default function Home() {
                 <li>✔ Fan installation</li>
               </ul>
 
-              <Link href="/book" className="mt-6 inline-block text-sm underline">
+              <Link
+                href="/book"
+                className="mt-6 inline-block text-sm underline"
+              >
                 Book Electrician →
               </Link>
             </div>
@@ -171,6 +180,52 @@ export default function Home() {
               <Link href="/book" className="mt-6 inline-block text-sm underline">
                 Book AC Repair →
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <h2 className="text-2xl font-semibold">What Residents Say</h2>
+
+          <p className="mt-3 text-sm text-gray-600 max-w-2xl mx-auto">
+            Early feedback from our Noida pilot users.
+          </p>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="rounded-3xl border bg-white p-8 shadow-sm">
+              <p className="text-sm text-gray-600 leading-relaxed">
+                “Booked a plumber through QuickFix Local. The technician arrived
+                on time and fixed the leakage quickly. Very smooth experience.”
+              </p>
+              <div className="mt-6">
+                <p className="text-sm font-medium text-gray-900">Rohit Sharma</p>
+                <p className="text-xs text-gray-500">Sector 75, Noida</p>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border bg-white p-8 shadow-sm">
+              <p className="text-sm text-gray-600 leading-relaxed">
+                “Transparent pricing and professional behavior. Much better than
+                random local technicians.”
+              </p>
+              <div className="mt-6">
+                <p className="text-sm font-medium text-gray-900">Neha Verma</p>
+                <p className="text-xs text-gray-500">Sector 137, Noida</p>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border bg-white p-8 shadow-sm">
+              <p className="text-sm text-gray-600 leading-relaxed">
+                “AC service was done properly and the team explained everything.
+                Looking forward to using again.”
+              </p>
+              <div className="mt-6">
+                <p className="text-sm font-medium text-gray-900">Amit Gupta</p>
+                <p className="text-xs text-gray-500">Sector 78, Noida</p>
+              </div>
             </div>
           </div>
         </div>
@@ -200,7 +255,8 @@ export default function Home() {
             <div className="rounded-2xl border bg-white p-6 shadow-sm">
               <div className="text-sm font-semibold">3) Done</div>
               <p className="mt-2 text-sm text-gray-600">
-                A verified professional completes the job. You rate the experience.
+                A verified professional completes the job. You rate the
+                experience.
               </p>
             </div>
           </div>
