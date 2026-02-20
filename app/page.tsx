@@ -3,7 +3,6 @@ import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
 
 const ServiceIcon = ({ label }: { label: string }) => {
-  // Simple inline “icon” without any package install
   const icon =
     label === "Plumbing" ? "🔧" : label === "Electrician" ? "⚡" : "❄️";
   return (
@@ -38,7 +37,10 @@ export default function Home() {
               <Button className="px-6 py-3">Book a Service</Button>
             </Link>
 
-            <a href="#about" className="px-6 py-3 text-sm text-gray-700 underline">
+            <a
+              href="#about"
+              className="px-6 py-3 text-sm text-gray-700 underline"
+            >
               Learn more
             </a>
           </div>
@@ -46,15 +48,21 @@ export default function Home() {
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div className="rounded-2xl border bg-white p-4 text-left shadow-sm">
               <div className="text-sm font-semibold">Verified</div>
-              <div className="mt-1 text-sm text-gray-600">Background checks + skill tagging</div>
+              <div className="mt-1 text-sm text-gray-600">
+                Background checks + skill tagging
+              </div>
             </div>
             <div className="rounded-2xl border bg-white p-4 text-left shadow-sm">
               <div className="text-sm font-semibold">Transparent</div>
-              <div className="mt-1 text-sm text-gray-600">Clear pricing before work starts</div>
+              <div className="mt-1 text-sm text-gray-600">
+                Clear pricing before work starts
+              </div>
             </div>
             <div className="rounded-2xl border bg-white p-4 text-left shadow-sm">
               <div className="text-sm font-semibold">Local Support</div>
-              <div className="mt-1 text-sm text-gray-600">Noida-first coordination and help</div>
+              <div className="mt-1 text-sm text-gray-600">
+                Noida-first coordination and help
+              </div>
             </div>
           </div>
         </div>
@@ -63,9 +71,12 @@ export default function Home() {
       {/* SERVICES */}
       <section className="py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-2xl font-semibold">Our Core Services</h2>
+          <h2 className="text-center text-2xl font-semibold">
+            Our Core Services
+          </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-600">
-            We’re starting focused to ensure quality. Only 3 services in Noida for now.
+            We’re starting focused to ensure quality. Only 3 services in Noida
+            for now.
           </p>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -99,6 +110,68 @@ export default function Home() {
                 </div>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING PREVIEW */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <h2 className="text-2xl font-semibold">Transparent Pricing</h2>
+
+          <p className="mt-3 text-sm text-gray-600 max-w-2xl mx-auto">
+            Clear starting prices. Final cost depends on inspection and work
+            required. No hidden charges.
+          </p>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="rounded-3xl border bg-gray-50 p-8 shadow-sm hover:shadow-md transition">
+              <h3 className="text-lg font-medium">Plumbing</h3>
+              <p className="mt-3 text-3xl font-semibold">₹199</p>
+              <p className="mt-1 text-xs text-gray-500">starting price</p>
+
+              <ul className="mt-6 text-sm text-gray-600 space-y-2 text-left">
+                <li>✔ Tap & leakage repair</li>
+                <li>✔ Pipe inspection</li>
+                <li>✔ Bathroom fittings</li>
+              </ul>
+
+              <Link href="/book" className="mt-6 inline-block text-sm underline">
+                Book Plumbing →
+              </Link>
+            </div>
+
+            <div className="rounded-3xl border bg-gray-50 p-8 shadow-sm hover:shadow-md transition">
+              <h3 className="text-lg font-medium">Electrician</h3>
+              <p className="mt-3 text-3xl font-semibold">₹199</p>
+              <p className="mt-1 text-xs text-gray-500">starting price</p>
+
+              <ul className="mt-6 text-sm text-gray-600 space-y-2 text-left">
+                <li>✔ Switch replacement</li>
+                <li>✔ Wiring check</li>
+                <li>✔ Fan installation</li>
+              </ul>
+
+              <Link href="/book" className="mt-6 inline-block text-sm underline">
+                Book Electrician →
+              </Link>
+            </div>
+
+            <div className="rounded-3xl border bg-gray-50 p-8 shadow-sm hover:shadow-md transition">
+              <h3 className="text-lg font-medium">AC Repair</h3>
+              <p className="mt-3 text-3xl font-semibold">₹399</p>
+              <p className="mt-1 text-xs text-gray-500">starting price</p>
+
+              <ul className="mt-6 text-sm text-gray-600 space-y-2 text-left">
+                <li>✔ Basic servicing</li>
+                <li>✔ Cooling inspection</li>
+                <li>✔ Gas refill check</li>
+              </ul>
+
+              <Link href="/book" className="mt-6 inline-block text-sm underline">
+                Book AC Repair →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -139,13 +212,15 @@ export default function Home() {
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="text-2xl font-semibold">About QuickFix Local</h2>
           <p className="mt-6 text-sm leading-relaxed text-gray-600">
-            QuickFix Local is a Noida-based home service platform focused on reliable,
-            professional and transparent service delivery. We’re building a trust-first
-            network by onboarding verified local experts with clear service standards.
+            QuickFix Local is a Noida-based home service platform focused on
+            reliable, professional and transparent service delivery. We’re
+            building a trust-first network by onboarding verified local experts
+            with clear service standards.
           </p>
           <p className="mt-4 text-sm leading-relaxed text-gray-600">
-            We are currently <b>pre-launch</b>. Our first goal is to deliver an excellent
-            experience in Noida before expanding to more categories and areas.
+            We are currently <b>pre-launch</b>. Our first goal is to deliver an
+            excellent experience in Noida before expanding to more categories
+            and areas.
           </p>
         </div>
       </section>
@@ -153,7 +228,9 @@ export default function Home() {
       {/* CTA */}
       <section className="bg-gray-50 py-16">
         <div className="mx-auto max-w-6xl px-6 text-center">
-          <h2 className="text-2xl font-semibold">Ready to book a trusted professional?</h2>
+          <h2 className="text-2xl font-semibold">
+            Ready to book a trusted professional?
+          </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-gray-600">
             Share your request and we’ll confirm the next available expert.
           </p>
