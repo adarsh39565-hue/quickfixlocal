@@ -15,8 +15,8 @@ function ConfirmInner() {
 
   const cleanPhone = phone.replace(/\D/g, "");
 
-  // WhatsApp number: put your business number here (with country code, no +)
-  // Example: 919999999999
+  // ✅ CHANGE THIS to your WhatsApp number with country code (no +)
+  // Example: 919876543210
   const businessWhatsApp = "91XXXXXXXXXX";
 
   const waText = encodeURIComponent(
@@ -79,15 +79,13 @@ function ConfirmInner() {
 }
 
 export default function ConfirmPage() {
-  // ✅ This Suspense wrapper fixes the Vercel build error for useSearchParams
+  // ✅ Needed because useSearchParams must be inside Suspense in Next 16
   return (
     <Suspense
       fallback={
         <div className="min-h-screen bg-gray-50">
-          <div className="mx-auto max-w-xl px-4 py-10">
-            <div className="rounded-2xl border bg-white p-6 shadow-sm">
-              Loading confirmation…
-            </div>
+          <div className="mx-auto max-w-xl px-4 py-10 text-sm text-gray-600">
+            Loading confirmation…
           </div>
         </div>
       }
