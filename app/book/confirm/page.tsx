@@ -1,11 +1,10 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import React, { Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Button } from "../../../components/ui/button";
+import { Card } from "../../../components/ui/card";
 
 function ConfirmInner() {
   const params = useSearchParams();
@@ -14,45 +13,82 @@ function ConfirmInner() {
   const city = params.get("city") ?? "";
   const phone = params.get("phone") ?? "";
 
+  const cleanPhone = phone.replace(/\D/g, "");
+
+  // WhatsApp number: put your business number here (with country code, no +)
+  // Example: 919999999999
+  const businessWhatsApp = "91XXXXXXXXXX";
+
+  const waText = encodeURIComponent(
+    `Hi QuickFix Local 👋\n\nBooking request:\nService: ${service}\nCity: ${city}\nPhone: ${phone}\n\nPlease confirm availability.`
+  );
+
+  const whatsappUrl = `https://wa.me/${businessWhatsApp}?text=${waText}`;
+  const callUrl = cleanPhone ? `tel:${cleanPhone}` : "tel:";
+
   return (
-    <div className="py-10 max-w-xl mx-auto px-4">
-      <h1 className="text-2xl font-semibold">Request received ✅</h1>
-
-      <p className="mt-2 text-sm text-gray-600">
-        We’ll contact you soon with an available professional in your area.
-      </p>
-
-      <div className="mt-6 rounded-xl border bg-white p-5 space-y-2 text-sm">
-        <div>
-          <b>Service:</b> {service || "-"}
+    <div className="min-h-screen bg-gray-50">
+      <div className="mx-auto max-w-xl px-4 py-10">
+        <div className="mb-6">
+          <h1 className="text-2xl font-semibold">Request received ✅</h1>
+          <p className="mt-2 text-sm text-gray-600">
+            We’ll contact you soon with an available professional.
+          </p>
         </div>
-        <div>
-          <b>City:</b> {city || "-"}
-        </div>
-        <div>
-          <b>Phone:</b> {phone || "-"}
-        </div>
-      </div>
 
-      <div className="mt-6 flex gap-3">
-        <Link href="/">
-          <Button>Back to Home</Button>
-        </Link>
+        <Card className="rounded-2xl border bg-white p-6 shadow-sm">
+          <div className="space-y-2 text-sm">
+            <div>
+              <span className="font-medium">Service:</span>{" "}
+              <span className="text-gray-700">{service || "-"}</span>
+            </div>
+            <div>
+              <span className="font-medium">City:</span>{" "}
+              <span className="text-gray-700">{city || "-"}</span>
+            </div>
+            <div>
+              <span className="font-medium">Phone:</span>{" "}
+              <span className="text-gray-700">{phone || "-"}</span>
+            </div>
+          </div>
 
-        <Link href="/book">
-          <Button variant="outline">Book Another</Button>
-        </Link>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <a href={whatsappUrl} target="_blank" rel="noreferrer">
+              <Button className="w-full">Chat on WhatsApp</Button>
+            </a>
+
+            <a href={callUrl}>
+              <Button variant="outline" className="w-full">
+                Call Now
+              </Button>
+            </a>
+          </div>
+
+          <div className="mt-6 flex items-center justify-between text-sm">
+            <Link className="text-gray-700 hover:underline" href="/book">
+              Edit details
+            </Link>
+            <Link className="text-gray-700 hover:underline" href="/">
+              Back to Home
+            </Link>
+          </div>
+        </Card>
       </div>
     </div>
   );
 }
 
 export default function ConfirmPage() {
+  // ✅ This Suspense wrapper fixes the Vercel build error for useSearchParams
   return (
     <Suspense
       fallback={
-        <div className="py-10 max-w-xl mx-auto px-4 text-sm text-gray-600">
-          Loading confirmation...
+        <div className="min-h-screen bg-gray-50">
+          <div className="mx-auto max-w-xl px-4 py-10">
+            <div className="rounded-2xl border bg-white p-6 shadow-sm">
+              Loading confirmation…
+            </div>
+          </div>
         </div>
       }
     >
