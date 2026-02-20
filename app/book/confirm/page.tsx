@@ -2,11 +2,12 @@
 
 export const dynamic = "force-dynamic";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "../../../components/ui/button";
 
-export default function ConfirmPage() {
+function ConfirmInner() {
   const params = useSearchParams();
 
   const service = params.get("service") ?? "";
@@ -43,5 +44,19 @@ export default function ConfirmPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function ConfirmPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="py-10 max-w-xl mx-auto px-4 text-sm text-gray-600">
+          Loading confirmation...
+        </div>
+      }
+    >
+      <ConfirmInner />
+    </Suspense>
   );
 }
