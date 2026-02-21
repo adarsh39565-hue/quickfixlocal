@@ -2,11 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: 255 255 255;
+  --fg: 17 24 39;
+}
+
 html,
 body {
   height: 100%;
 }
 
 body {
-  background: #0b1220;
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Nice default smoothing */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Make links not look “default blue/purple” */
+a {
+  color: inherit;
+  text-decoration: none;
 }
