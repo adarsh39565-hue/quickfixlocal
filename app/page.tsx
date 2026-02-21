@@ -1,24 +1,29 @@
 import Link from "next/link";
-import { Button } from "../components/ui/button";
-import { Card } from "../components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const services = [
   {
     title: "Plumbing",
-    subtitle: "Leaks • Taps • Blockages",
-    points: ["Leak repair", "Tap & mixer install", "Drain cleaning", "Bathroom fittings"],
+    tag: "Leaks • Tap • Bathroom",
+    desc:
+      "Leaks, taps, blockages, pipelines — quick fixes + proper solutions with clean finish.",
+    points: ["Leak repair", "Tap/mixer install", "Drain cleaning", "Bathroom fittings"],
     href: "/get-started?service=plumbing",
   },
   {
     title: "Electrician",
-    subtitle: "Switch • Fan • Light",
-    points: ["Switchboard repair", "Fan install/repair", "Light & wiring", "MCB/short-circuit checks"],
+    tag: "Switch • Fan • Light",
+    desc:
+      "Switch boards, lights, fans, wiring — safe, tidy work with verified professionals.",
+    points: ["Switch repair", "Fan install", "Light wiring", "MCB/tripping fix"],
     href: "/get-started?service=electrician",
   },
   {
     title: "AC Repair",
-    subtitle: "Cooling issue • Gas check",
-    points: ["AC not cooling fix", "Gas check/refill", "Service & cleaning", "Basic diagnostics"],
+    tag: "Cooling • Gas check • Service",
+    desc:
+      "AC not cooling? Gas check, service, minor repairs — fast resolution and updates.",
+    points: ["AC servicing", "Gas check", "Cooling fix", "Noise/water leak"],
     href: "/get-started?service=ac-repair",
   },
 ];
@@ -26,239 +31,272 @@ const services = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#070A12] text-white">
-      {/* Background glow */}
-      <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-blue-600/20 blur-3xl" />
-        <div className="absolute top-24 right-[-140px] h-[520px] w-[520px] rounded-full bg-indigo-500/15 blur-3xl" />
-        <div className="absolute bottom-[-220px] left-1/3 h-[620px] w-[620px] rounded-full bg-cyan-400/10 blur-3xl" />
+      {/* Deep gradient background */}
+      <div className="pointer-events-none fixed inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_20%_20%,rgba(59,130,246,0.25),transparent_60%),radial-gradient(900px_500px_at_80%_30%,rgba(99,102,241,0.18),transparent_60%),radial-gradient(700px_500px_at_60%_90%,rgba(16,185,129,0.10),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.04),transparent_40%,rgba(0,0,0,0.35))]" />
       </div>
 
-      {/* Top Nav */}
-      <header className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-6">
+      {/* NAVBAR */}
+      <header className="relative z-10 mx-auto flex max-w-6xl items-center justify-between px-4 py-6">
         <Link href="/" className="flex items-center gap-3">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/10">
-            <span className="h-5 w-5 rounded-md bg-gradient-to-br from-blue-400 to-indigo-500" />
-          </span>
+          <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 shadow-[0_10px_30px_rgba(59,130,246,0.25)]" />
           <div className="leading-tight">
             <div className="text-sm font-semibold">QuickFix Local</div>
             <div className="text-xs text-white/60">Noida • Pre-launch</div>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-7 text-sm text-white/70 md:flex">
-          <a href="#services" className="hover:text-white">Services</a>
-          <a href="#about" className="hover:text-white">About</a>
-          <a href="#faq" className="hover:text-white">FAQ</a>
+        <nav className="hidden items-center gap-6 text-sm text-white/70 md:flex">
+          <a href="#services" className="hover:text-white">
+            Services
+          </a>
+          <a href="#about" className="hover:text-white">
+            About
+          </a>
+          <a href="#faq" className="hover:text-white">
+            FAQ
+          </a>
         </nav>
 
         <div className="flex items-center gap-3">
+          {/* Primary */}
           <Link href="/get-started">
-            <Button variant="outline" className="hidden md:inline-flex">
+            <Button className="bg-blue-600 text-white hover:bg-blue-500">
               Book a service
             </Button>
           </Link>
+
+          {/* Secondary */}
           <a href="#services">
-            <Button>View services</Button>
+            <Button className="border border-white/15 bg-white/5 text-white hover:bg-white/10">
+              View services
+            </Button>
           </a>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-10 pt-6">
-        <div className="grid gap-8 md:grid-cols-2 md:items-center">
-          {/* Left */}
+      {/* HERO */}
+      <section className="relative z-10 mx-auto max-w-6xl px-4 py-10 md:py-16">
+        <div className="grid items-center gap-10 md:grid-cols-2">
+          {/* LEFT */}
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs text-white/70 ring-1 ring-white/10">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1 text-xs text-white/70 ring-1 ring-white/10">
               <span className="h-2 w-2 rounded-full bg-emerald-400" />
               We’re building Noida’s trusted home service network
             </div>
 
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-              Fast, verified home <br />
-              services —{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+            <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
+              Fast, verified{" "}
+              <span className="text-white/90">home services</span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-sky-300 bg-clip-text text-transparent">
                 right at your doorstep.
               </span>
             </h1>
 
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70">
-              Starting with the 3 most demanded categories: Plumbing, Electrician, AC Repair.
-              Simple booking, transparent pricing, and real-time updates.
+            <p className="mt-5 max-w-xl text-base text-white/70">
+              Starting with{" "}
+              <span className="text-white/85">Plumbing</span>,{" "}
+              <span className="text-white/85">Electrician</span>, and{" "}
+              <span className="text-white/85">AC Repair</span>. Simple booking,
+              transparent pricing, and real-time updates.
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/get-started">
-                <Button className="px-5">Book a service →</Button>
+                <Button className="bg-blue-600 text-white hover:bg-blue-500 px-6">
+                  Book a service →
+                </Button>
               </Link>
+
               <a href="#about">
-                <Button variant="outline" className="px-5">
+                <Button className="border border-white/15 bg-white/5 text-white hover:bg-white/10 px-6">
                   About QuickFix
                 </Button>
               </a>
             </div>
 
-            {/* Stats Row */}
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              <Card className="bg-white/5 p-4 ring-1 ring-white/10">
+            {/* STAT STRIP */}
+            <div className="mt-10 grid gap-3 sm:grid-cols-3">
+              <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
                 <div className="text-xs text-white/60">Launch city</div>
-                <div className="mt-1 text-lg font-semibold">Noida</div>
-              </Card>
-              <Card className="bg-white/5 p-4 ring-1 ring-white/10">
+                <div className="mt-1 font-semibold">Noida</div>
+              </div>
+              <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
                 <div className="text-xs text-white/60">Model</div>
-                <div className="mt-1 text-lg font-semibold">Verified pros</div>
-              </Card>
-              <Card className="bg-white/5 p-4 ring-1 ring-white/10">
+                <div className="mt-1 font-semibold">Verified pros</div>
+              </div>
+              <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
                 <div className="text-xs text-white/60">Status</div>
-                <div className="mt-1 text-lg font-semibold">Pre-launch</div>
-              </Card>
+                <div className="mt-1 font-semibold">Pre-launch</div>
+              </div>
             </div>
           </div>
 
-          {/* Right */}
-          <Card className="bg-white/5 p-6 ring-1 ring-white/10">
-            <div className="rounded-2xl bg-gradient-to-br from-blue-500/20 via-indigo-500/10 to-cyan-400/10 p-5 ring-1 ring-white/10">
-              <h3 className="text-sm font-semibold">What you’ll get on Day 1</h3>
-
-              <ul className="mt-4 space-y-3 text-sm text-white/70">
-                <li className="flex gap-2">
-                  <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-500/30">
-                    ✓
-                  </span>
-                  Verified professionals (KYC + skill checks)
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-500/30">
-                    ✓
-                  </span>
-                  Transparent pricing (no surprise charges)
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-500/30">
-                    ✓
-                  </span>
-                  Clean work & punctual arrival
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-500/30">
-                    ✓
-                  </span>
-                  Booking + updates on WhatsApp/SMS
-                </li>
-              </ul>
-
-              <div className="mt-6 border-t border-white/10 pt-5">
-                <div className="text-xs font-semibold text-white/70">Popular today</div>
-                <div className="mt-3 grid gap-3">
-                  <div className="rounded-xl bg-white/5 p-3 ring-1 ring-white/10">
-                    <div className="text-sm font-semibold">AC Repair</div>
-                    <div className="text-xs text-white/60">Cooling issue • Gas check • Service</div>
+          {/* RIGHT — PayJustNow-style panel */}
+          <div className="relative">
+            <div className="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10">
+              <div className="grid gap-5 lg:grid-cols-2">
+                {/* Gradient “image” */}
+                <div className="relative overflow-hidden rounded-2xl ring-1 ring-white/10">
+                  <div className="h-44 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.9),transparent_55%),radial-gradient(circle_at_80%_35%,rgba(99,102,241,0.9),transparent_55%),radial-gradient(circle_at_40%_90%,rgba(236,72,153,0.55),transparent_55%),linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))]" />
+                  <div className="absolute bottom-3 left-3 rounded-full bg-black/35 px-3 py-1 text-xs text-white/80 ring-1 ring-white/10">
+                    Noida • Pre-launch
                   </div>
-                  <div className="rounded-xl bg-white/5 p-3 ring-1 ring-white/10">
-                    <div className="text-sm font-semibold">Plumbing</div>
+                </div>
+
+                {/* Day 1 checklist */}
+                <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                  <div className="text-sm font-semibold">What you’ll get on Day 1</div>
+                  <ul className="mt-3 space-y-2 text-sm text-white/70">
+                    <li>✓ Verified professionals (KYC + skill checks)</li>
+                    <li>✓ Transparent pricing (no surprise charges)</li>
+                    <li>✓ Clean work & punctual arrival</li>
+                    <li>✓ Updates on WhatsApp/SMS</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Mini metrics row like reference */}
+              <div className="mt-6 grid gap-3 md:grid-cols-3">
+                <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                  <div className="text-xs text-white/60">Categories (Day 1)</div>
+                  <div className="mt-1 text-xl font-bold">3</div>
+                  <div className="text-xs text-white/60">Plumbing • Electrician • AC</div>
+                </div>
+                <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                  <div className="text-xs text-white/60">Booking</div>
+                  <div className="mt-1 text-xl font-bold">1 min</div>
+                  <div className="text-xs text-white/60">Simple form + confirmation</div>
+                </div>
+                <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                  <div className="text-xs text-white/60">Support</div>
+                  <div className="mt-1 text-xl font-bold">Fast</div>
+                  <div className="text-xs text-white/60">Updates + quick resolution</div>
+                </div>
+              </div>
+
+              {/* Popular Today cards */}
+              <div className="mt-6">
+                <div className="text-xs font-semibold text-white/70">Popular today</div>
+                <div className="mt-3 grid gap-3 md:grid-cols-3">
+                  <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                    <div className="font-semibold">AC Repair</div>
+                    <div className="text-xs text-white/60">Cooling • Gas check • Service</div>
+                  </div>
+                  <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                    <div className="font-semibold">Plumbing</div>
                     <div className="text-xs text-white/60">Leak • Tap • Bathroom</div>
                   </div>
-                  <div className="rounded-xl bg-white/5 p-3 ring-1 ring-white/10">
-                    <div className="text-sm font-semibold">Electrician</div>
+                  <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                    <div className="font-semibold">Electrician</div>
                     <div className="text-xs text-white/60">Switch • Fan • Light</div>
                   </div>
                 </div>
 
-                <p className="mt-4 text-xs text-white/50">
-                  *Pre-launch note: timings, pricing and service areas will expand after pilot.
-                </p>
+                <div className="mt-3 text-xs text-white/50">
+                  *Pre-launch note: pricing and areas will expand after pilot.
+                </div>
               </div>
             </div>
-          </Card>
+          </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="relative z-10 mx-auto w-full max-w-6xl px-4 py-10">
+      {/* SERVICES */}
+      <section id="services" className="relative z-10 mx-auto max-w-6xl px-4 pb-20">
         <div className="flex items-end justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold">Our 3 Services (Noida)</h2>
-            <p className="mt-2 max-w-2xl text-sm text-white/70">
-              We’re starting focused. Clear scope, quality checks, and fast resolution — built for
-              Noida homes.
+            <p className="mt-2 text-sm text-white/70">
+              Focused launch. Clear scope. Quality checks. Fast resolution.
             </p>
           </div>
-          <Link href="/get-started" className="hidden md:block">
-            <Button variant="outline">Get started</Button>
-          </Link>
+          <a href="#faq" className="hidden text-sm text-white/70 hover:text-white md:block">
+            See FAQ →
+          </a>
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
           {services.map((s) => (
-            <Card key={s.title} className="bg-white/5 p-6 ring-1 ring-white/10">
-              <div className="text-lg font-semibold">{s.title}</div>
-              <div className="mt-1 text-xs text-white/60">{s.subtitle}</div>
+            <div
+              key={s.title}
+              className="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10 hover:bg-white/7 transition"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="text-lg font-semibold">{s.title}</div>
+                <div className="rounded-full bg-white/5 px-3 py-1 text-xs text-white/70 ring-1 ring-white/10">
+                  {s.tag}
+                </div>
+              </div>
+
+              <p className="mt-3 text-sm text-white/70">{s.desc}</p>
 
               <ul className="mt-4 space-y-2 text-sm text-white/70">
                 {s.points.map((p) => (
-                  <li key={p} className="flex gap-2">
-                    <span className="text-blue-300">•</span>
-                    {p}
-                  </li>
+                  <li key={p}>• {p}</li>
                 ))}
               </ul>
 
-              <div className="mt-6">
-                <Link href={s.href}>
-                  <Button className="w-full">Book {s.title}</Button>
+              <div className="mt-6 flex gap-3">
+                <Link href={s.href} className="w-full">
+                  <Button className="w-full bg-blue-600 text-white hover:bg-blue-500">
+                    Book now
+                  </Button>
                 </Link>
+
+                <a href="#about" className="w-full">
+                  <Button className="w-full border border-white/15 bg-white/5 text-white hover:bg-white/10">
+                    Learn
+                  </Button>
+                </a>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" className="relative z-10 mx-auto w-full max-w-6xl px-4 py-10">
-        <Card className="bg-white/5 p-7 ring-1 ring-white/10">
+      {/* ABOUT */}
+      <section id="about" className="relative z-10 mx-auto max-w-6xl px-4 pb-16">
+        <div className="rounded-3xl bg-white/5 p-8 ring-1 ring-white/10">
           <h3 className="text-xl font-bold">About QuickFix Local</h3>
-          <p className="mt-3 text-sm leading-relaxed text-white/70">
-            QuickFix Local is building a trusted network of home service professionals for Noida.
-            Our focus is simple: verified workers, transparent pricing, punctual service, and
-            clear communication. We’re pre-launch right now — building the system, onboarding
-            professionals, and refining the customer experience before scale.
+          <p className="mt-3 text-sm text-white/70 max-w-3xl">
+            We’re building a verified network of local professionals for Noida.
+            The goal is simple: reliable service, transparent pricing, and a clean customer experience —
+            without delays, confusion, or surprise charges.
           </p>
-        </Card>
+        </div>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-16 pt-4">
-        <div className="grid gap-4 md:grid-cols-3">
-          <Card className="bg-white/5 p-6 ring-1 ring-white/10">
-            <div className="text-sm font-semibold">When are you launching?</div>
-            <div className="mt-2 text-sm text-white/70">
-              We’re starting with a controlled pilot in Noida. Launch timing will be announced on
-              our socials soon.
+      <section id="faq" className="relative z-10 mx-auto max-w-6xl px-4 pb-24">
+        <div className="rounded-3xl bg-white/5 p-8 ring-1 ring-white/10">
+          <h3 className="text-xl font-bold">FAQ</h3>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10">
+              <div className="font-semibold">Are you live in Noida now?</div>
+              <p className="mt-2 text-sm text-white/70">
+                We’re in pre-launch. You can submit a request and we’ll contact you as we onboard verified pros.
+              </p>
             </div>
-          </Card>
-          <Card className="bg-white/5 p-6 ring-1 ring-white/10">
-            <div className="text-sm font-semibold">How will pricing work?</div>
-            <div className="mt-2 text-sm text-white/70">
-              Upfront, transparent pricing for common tasks — no surprise charges. Complex jobs
-              get a clear quote first.
+            <div className="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10">
+              <div className="font-semibold">How do you verify professionals?</div>
+              <p className="mt-2 text-sm text-white/70">
+                KYC checks + skill validation + service behavior standards before they get listed.
+              </p>
             </div>
-          </Card>
-          <Card className="bg-white/5 p-6 ring-1 ring-white/10">
-            <div className="text-sm font-semibold">How do you verify pros?</div>
-            <div className="mt-2 text-sm text-white/70">
-              KYC checks, skill verification, and ongoing quality feedback loops.
-            </div>
-          </Card>
-        </div>
-
-        <footer className="mt-10 flex items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-white/50">
-          <div>© {new Date().getFullYear()} QuickFix Local • Noida</div>
-          <div className="flex gap-3">
-            <a className="hover:text-white" href="#services">Services</a>
-            <a className="hover:text-white" href="#about">About</a>
-            <a className="hover:text-white" href="#faq">FAQ</a>
           </div>
-        </footer>
+        </div>
       </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-white/10">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 text-xs text-white/60">
+          <div>© {new Date().getFullYear()} QuickFix Local</div>
+          <div>Noida • Pre-launch</div>
+        </div>
+      </footer>
     </main>
   );
 }
