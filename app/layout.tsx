@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "QuickFix Local",
-  description: "Noida’s trusted home service network (Plumbing • Electrician • AC Repair)",
+  description: "Noida’s trusted home services (Pre-launch)",
 };
 
 export default function RootLayout({
@@ -12,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="min-h-screen bg-white text-slate-900 antialiased">
+        {children}
+      </body>
     </html>
   );
 }
