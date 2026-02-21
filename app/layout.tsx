@@ -1,9 +1,8 @@
 import "./globals.css";
-import Navbar from "../components/Navbar";
 
 export const metadata = {
   title: "QuickFix Local",
-  description: "Trusted home services in Noida",
+  description: "Noida’s trusted home service network (Plumbing • Electrician • AC Repair)",
 };
 
 export default function RootLayout({
@@ -13,10 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white text-gray-900">
-        <Navbar />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
